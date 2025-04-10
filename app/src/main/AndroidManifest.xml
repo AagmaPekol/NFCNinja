@@ -13,6 +13,18 @@
         android:theme="@style/Theme.NFCNinja"
         tools:targetApi="31">
         <activity
+            android:name=".gustav"
+            android:exported="false" />
+        <activity
+            android:name=".nikolas"
+            android:exported="false" />
+        <activity
+            android:name=".magnus"
+            android:exported="false" />
+        <activity
+            android:name=".mads"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
