@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class gustav extends AppCompatActivity {
 
+    //WOW! Look at this comment. So cool!
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
