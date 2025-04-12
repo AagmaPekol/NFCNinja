@@ -1,6 +1,9 @@
 package com.example.nfcninja;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,5 +24,17 @@ public class gustav extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button button = (Button) findViewById(R.id.readerButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("BUTTONS", "User tapped the ReaderButton");
+                
+            }
+        });
+
     }
+
+
 }
