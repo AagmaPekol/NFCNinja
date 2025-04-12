@@ -30,7 +30,7 @@ public class gustav extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("BUTTONS", "User tapped the ReaderButton");
-                
+
             }
         });
 
