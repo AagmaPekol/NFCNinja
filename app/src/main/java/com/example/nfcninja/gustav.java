@@ -43,25 +43,21 @@ public class gustav extends AppCompatActivity {
         });
 
 
-        Button button = (Button) findViewById(R.id.readerButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("BUTTONS", "User tapped the ReaderButton");
-
-                if (!readerActive) {
-                    button.setText("Stop reading");
-                } else {
-                    button.setText("Start reading");
-                }
-                readerActive = !readerActive;
-                Log.d("BUTTONS", "readerActive: " + readerActive);
-            }
-        });
-
-//        if (readerActive) {
-//            readTag();
-//        }
+//        Button button = (Button) findViewById(R.id.readerButton);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("BUTTONS", "User tapped the ReaderButton");
+//
+//                if (!readerActive) {
+//                    button.setText("Stop reading");
+//                } else {
+//                    button.setText("Start reading");
+//                }
+//                readerActive = !readerActive;
+//                Log.d("BUTTONS", "readerActive: " + readerActive);
+//            }
+//        });
 
         nfcInfoTextView = findViewById(R.id.showReadNfc);
 
@@ -69,13 +65,12 @@ public class gustav extends AppCompatActivity {
         if (nfcAdapter ==null) {
             Log.d("NFC","NFC is not available on this device.");
             Toast.makeText(this, "NFC is not available on this device.", Toast.LENGTH_LONG).show();
-            button.setEnabled(false); // Disable the button if NFC is not available
+//            button.setEnabled(false); // Disable the button if NFC is not available
             return;
         }
 
         Intent intent = new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
 
         // Setup intent filters for NfcA technology
         IntentFilter tech = new IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED);
@@ -90,7 +85,7 @@ public class gustav extends AppCompatActivity {
                 processTag(tag);
             }
         } else {
-            nfcInfoTextView.setText("Tap the button to start reading (NfcA).");
+            nfcInfoTextView.setText("Scanning for tags... (NfcA).");
         }
     }
 
@@ -104,19 +99,16 @@ public class gustav extends AppCompatActivity {
             }
         }
     }
-
-    // gusNOTE: I don't know what the FUCK this is, so I made chat write comments
     private void processTag(Tag tag) {
         StringBuilder tagInfo = new StringBuilder();
 
-        tagInfo.append("Student Card Tag Found!\n");
-        tagInfo.append("Tag ID (Hex): ").append(bytesToHexString(tag.getId())).append("\n");
-        // The `tag.getId()` method returns the unique identifier of the NFC tag as a byte array. We convert it to a hexadecimal string for easier readability.
+        tagInfo.append("Card Tag Found!\n");
+        tagInfo.append("Tag ID (Serial Number): ").append(bytesToHexString(tag.getId())).append("\n");
 
         String[] techList = tag.getTechList();
         tagInfo.append("Technologies: ").append(Arrays.toString(techList)).append("\n");
-        // `tag.getTechList()` returns an array of strings representing the technologies supported by the discovered tag. For an NfcA card, this list will contain "android.nfc.tech.NfcA".
 
+        // adds a bunch of data to a string that is displayed for the user.
         for (String tech : techList) {
             if (tech.equals(NfcA.class.getName())) {
                 NfcA nfcA = NfcA.get(tag);
@@ -126,18 +118,10 @@ public class gustav extends AppCompatActivity {
                     tagInfo.append("  SAK (Select Acknowledge): ").append(String.format("%02x", nfcA.getSak())).append("\n");
                     tagInfo.append("  Maximum Transceive Length: ").append(nfcA.getMaxTransceiveLength()).append(" bytes\n");
                     tagInfo.append("  Timeout: ").append(nfcA.getTimeout()).append(" ms\n");
-                    // Here, we specifically check if the "android.nfc.tech.NfcA" technology is present in the tag's technology list.
-                    // If it is, we get an `NfcA` object from the `Tag`. This object allows us to access NfcA-specific properties of the tag, such as:
-                    // - `getAtqa()`: Returns the ATQA (Answer to Request, Type A) bytes. This is part of the initial anti-collision and identification process.
-                    // - `getSak()`: Returns the SAK (Select Acknowledge) byte. This provides information about the tag's capabilities and conformance.
-                    // - `getMaxTransceiveLength()`: Returns the maximum number of bytes that can be sent to and received from the tag in a single transceive operation.
-                    // - `getTimeout()`: Returns the current timeout value in milliseconds used for transceive operations.
-                    // We then format these values and append them to the `tagInfo` StringBuilder.
                 }
             }
         }
-
-        nfcInfoTextView.setText(tagInfo.toString()); // Finally, we set the text of the `nfcInfoTextView` to display the collected tag information.
+        nfcInfoTextView.setText(tagInfo.toString());
     }
     private String bytesToHexString(byte[] bytes) {
         StringBuilder sb = new StringBuilder();
@@ -146,7 +130,6 @@ public class gustav extends AppCompatActivity {
         }
         return sb.toString();
     } // Helper function to convert a byte array to a hexadecimal string. This is commonly used for displaying tag IDs and other binary data in a human-readable format.
-
 
     @Override
     protected void onResume() {
@@ -163,10 +146,4 @@ public class gustav extends AppCompatActivity {
             nfcAdapter.disableForegroundDispatch(this);
         }
     }
-
-
-//    private void readTag(Intent intent) {
-//
-//    }
-
 }
