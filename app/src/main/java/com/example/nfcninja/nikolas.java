@@ -1,5 +1,6 @@
 package com.example.nfcninja;
 
+import android.nfc.tech.NfcA;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -22,3 +23,4 @@ public class nikolas extends AppCompatActivity {
         });
     }
 }
+
