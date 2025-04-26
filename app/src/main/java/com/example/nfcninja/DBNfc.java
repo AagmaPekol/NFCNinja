@@ -21,7 +21,7 @@ public class DBNfc {
     @ColumnInfo
     public String SAK;
     @ColumnInfo
-    public String maxTransceiveLength;
+    public int maxTransceiveLength;
     @ColumnInfo
     public int timeout;
 
