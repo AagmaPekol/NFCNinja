@@ -36,7 +36,15 @@ public class nikolas extends AppCompatActivity {
     List<DBNfc> tags = nfcDao.getAll();
     List<DBNfc> tagsOne = nfcDao.loadAllByIds(array);
 
-
+    public void ReadNfc(int primaryKey){
+        DBNfc nfcTag = nfcDao.getTagById(primaryKey);
+        String nfcInfo = nfcTag.tagInfo;
+        String nfcId = nfcTag.tagId;
+        String nfcTech = nfcTag.technologies;
+        String nfcATQA = nfcTag.ATQA;
+        int nfcMaxTransLength = nfcTag.maxTransceiveLength;
+        int nfcTimeout = nfcTag.timeout;
+    }
 
 
 
