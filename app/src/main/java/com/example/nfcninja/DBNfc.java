@@ -13,6 +13,19 @@ public class DBNfc {
     public String tagInfo;
 
     @ColumnInfo
+    public String tagId;
+    @ColumnInfo
+    public String technologies;
+    @ColumnInfo
+    public String ATQA;
+    @ColumnInfo
+    public String SAK;
+    @ColumnInfo
+    public String maxTransceiveLength;
+    @ColumnInfo
+    public int timeout;
+
+    @ColumnInfo
     public String name;
 
 }

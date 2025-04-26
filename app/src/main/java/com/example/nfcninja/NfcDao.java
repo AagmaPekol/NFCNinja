@@ -20,5 +20,4 @@ public interface NfcDao {
 
     @Delete
     public void delete(DBNfc dbNfc);
-
 }

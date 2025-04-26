@@ -36,11 +36,8 @@ public class nikolas extends AppCompatActivity {
     List<DBNfc> tags = nfcDao.getAll();
     List<DBNfc> tagsOne = nfcDao.loadAllByIds(array);
 
-    DBNfc tag = new DBNfc();
-    //tag.tagInfo = "hello";
 
-    //nfcDao.insertAll(tags);
-    //nfcDao.delete(tags[1]);
+
 
 
 
