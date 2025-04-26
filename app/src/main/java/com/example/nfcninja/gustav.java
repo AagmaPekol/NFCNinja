@@ -118,7 +118,17 @@ public class gustav extends AppCompatActivity {
                     tagInfo.append("  SAK (Select Acknowledge): ").append(String.format("%02x", nfcA.getSak())).append("\n");
                     tagInfo.append("  Maximum Transceive Length: ").append(nfcA.getMaxTransceiveLength()).append(" bytes\n");
                     tagInfo.append("  Timeout: ").append(nfcA.getTimeout()).append(" ms\n");
+                    byte [] cardMemory = null;
+                    try {
+                        cardMemory = readPage(nfcA,1);
+                    } catch (IOException e) {
+                        Log.e("NFC", "did not work because: " + e);
+                    }
+                    if (cardMemory != null) {
+                        tagInfo.append("  Card memory I think?: ").append(bytesToHexString(cardMemory)).append(" yeah.. \n");
+                    }
                 }
+
             }
         }
         nfcInfoTextView.setText(tagInfo.toString());
@@ -131,9 +141,14 @@ public class gustav extends AppCompatActivity {
         return sb.toString();
     } // Helper function to convert a byte array to a hexadecimal string. This is commonly used for displaying tag IDs and other binary data in a human-readable format.
 
-    public static byte[] readPage(NfcA nfcA, int pageNumber) {
+    public static byte[] readPage(NfcA nfcA, int pageNumber) throws IOException {
         // sanity check
-        if ((nfcA == null) || (!nfcA.isConnected())) {
+        if (nfcA == null) {
+         return null;
+        }
+        nfcA.connect();
+
+        if (!nfcA.isConnected()) {
             Log.e("NFC", "nfcA is NULL or not connected, aborted");
             return null;
         }
