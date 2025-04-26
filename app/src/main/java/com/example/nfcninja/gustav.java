@@ -19,6 +19,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class gustav extends AppCompatActivity {
@@ -129,6 +130,25 @@ public class gustav extends AppCompatActivity {
         }
         return sb.toString();
     } // Helper function to convert a byte array to a hexadecimal string. This is commonly used for displaying tag IDs and other binary data in a human-readable format.
+
+    public static byte[] readPage(NfcA nfcA, int pageNumber) {
+        // sanity check
+        if ((nfcA == null) || (!nfcA.isConnected())) {
+            Log.e("NFC", "nfcA is NULL or not connected, aborted");
+            return null;
+        }
+        byte[] response = null;
+        try {
+            response = nfcA.transceive(new byte[]{
+                    (byte) 0x30, // READ a page command
+                    (byte) (pageNumber & 0xff)  // page address
+            });
+            return response;
+        } catch (IOException e) {
+            Log.e("NFC", "on page " + pageNumber + " readPage failed with IOException: " + e.getMessage());
+        }
+        return null;
+    }
 
     @Override
     protected void onResume() {
