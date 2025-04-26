@@ -100,27 +100,39 @@ public class gustav extends AppCompatActivity {
         }
     }
     private void processTag(Tag tag) {
-        StringBuilder tagInfo = new StringBuilder();
 
-        tagInfo.append("Card Tag Found!\n");
-        tagInfo.append("Tag ID (Serial Number): ").append(bytesToHexString(tag.getId())).append("\n");
+        String tagId = bytesToHexString(tag.getId());
+        String technologies = Arrays.toString(tag.getTechList());
 
-        String[] techList = tag.getTechList();
-        tagInfo.append("Technologies: ").append(Arrays.toString(techList)).append("\n");
+        NfcA nfcA = NfcA.get(tag);
+        nfca ? return;
+        String ATQA = bytesToHexString(nfcA.getAtqa());
+        String SAK;
+        String maxTransceiveLength;
+        int timeout;
 
-        // adds a bunch of data to a string that is displayed for the user.
-        for (String tech : techList) {
-            if (tech.equals(NfcA.class.getName())) {
-                NfcA nfcA = NfcA.get(tag);
-                if (nfcA != null) {
-                    tagInfo.append("\nNfcA Information:\n");
-                    tagInfo.append("  ATQA (Answer to Request, Type A): ").append(bytesToHexString(nfcA.getAtqa())).append("\n");
-                    tagInfo.append("  SAK (Select Acknowledge): ").append(String.format("%02x", nfcA.getSak())).append("\n");
-                    tagInfo.append("  Maximum Transceive Length: ").append(nfcA.getMaxTransceiveLength()).append(" bytes\n");
-                    tagInfo.append("  Timeout: ").append(nfcA.getTimeout()).append(" ms\n");
-                }
-            }
-        }
+
+//        StringBuilder tagInfo = new StringBuilder();
+//
+//        tagInfo.append("Card Tag Found!\n");
+//        tagInfo.append("Tag ID (Serial Number): ").append(bytesToHexString(tag.getId())).append("\n");
+//
+//        String[] techList = tag.getTechList();
+//        tagInfo.append("Technologies: ").append(Arrays.toString(techList)).append("\n");
+//
+//        // adds a bunch of data to a string that is displayed for the user.
+//        for (String tech : techList) {
+//            if (tech.equals(NfcA.class.getName())) {
+//                NfcA nfcA = NfcA.get(tag);
+//                if (nfcA != null) {
+//                    tagInfo.append("\nNfcA Information:\n");
+//                    tagInfo.append("  ATQA (Answer to Request, Type A): ").append(bytesToHexString(nfcA.getAtqa())).append("\n");
+//                    tagInfo.append("  SAK (Select Acknowledge): ").append(String.format("%02x", nfcA.getSak())).append("\n");
+//                    tagInfo.append("  Maximum Transceive Length: ").append(nfcA.getMaxTransceiveLength()).append(" bytes\n");
+//                    tagInfo.append("  Timeout: ").append(nfcA.getTimeout()).append(" ms\n");
+//                }
+//            }
+//        }
         nfcInfoTextView.setText(tagInfo.toString());
     }
     private String bytesToHexString(byte[] bytes) {
