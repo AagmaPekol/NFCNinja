@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NFCNinja</string>
+    <string-array name="recent_cards">
+        <item>AAU Card</item>
+        <item>Credit Card</item>
+        <item>Phone</item>
+    </string-array>
 </resources>
