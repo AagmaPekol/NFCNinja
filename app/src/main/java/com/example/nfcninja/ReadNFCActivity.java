@@ -56,7 +56,7 @@ public class ReadNFCActivity extends AppCompatActivity {
 //            }
 //        });
 
-        nfcInfoTextView = findViewById(R.id.showReadNfc);
+
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter ==null) {
@@ -82,7 +82,7 @@ public class ReadNFCActivity extends AppCompatActivity {
                 processTag(tag);
             }
         } else {
-            nfcInfoTextView.setText("Scanning for tags... (NfcA).");
+            Log.d("Scanning","Scanning for tags... (NfcA).");
         }
     }
 
