@@ -11,7 +11,6 @@
         android:id="@+id/tagInfoText"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
-        android:text="TextView"
         tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="173dp" />
 
@@ -19,7 +18,6 @@
         android:id="@+id/tagIdText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         tools:layout_editor_absoluteX="36dp"
         tools:layout_editor_absoluteY="231dp" />
 
@@ -27,7 +25,6 @@
         android:id="@+id/technologiesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         tools:layout_editor_absoluteX="36dp"
         tools:layout_editor_absoluteY="301dp" />
 
@@ -35,16 +32,13 @@
         android:id="@+id/ATQAText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="316dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="36dp"
         tools:layout_editor_absoluteY="356dp" />
 
     <TextView
         android:id="@+id/SAKText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         tools:layout_editor_absoluteX="36dp"
         tools:layout_editor_absoluteY="424dp" />
 
@@ -52,7 +46,6 @@
         android:id="@+id/maxTransceiveLengthText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="492dp" />
 
@@ -60,7 +53,6 @@
         android:id="@+id/timeoutText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         tools:layout_editor_absoluteX="39dp"
         tools:layout_editor_absoluteY="566dp" />
 
@@ -68,7 +60,6 @@
         android:id="@+id/nameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         tools:layout_editor_absoluteX="40dp"
         tools:layout_editor_absoluteY="634dp" />
 
@@ -79,9 +70,11 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="37dp"
         android:layout_marginEnd="101dp"
+        android:layout_marginBottom="72dp"
         android:ems="10"
         android:inputType="text"
         android:text="NFC tag Information"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

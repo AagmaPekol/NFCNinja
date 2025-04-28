@@ -8,6 +8,7 @@ import android.nfc.Tag;
 import android.nfc.tech.NfcA;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -100,6 +101,8 @@ public class ReadNFCActivity extends AppCompatActivity {
 
         DBNfc nfcTag = new DBNfc();
         nfcTag.tagId = bytesToHexString(tag.getId());
+        TextView tagIdText = (TextView) findViewById(R.id.tagIdText);
+        tagIdText.setText(nfcTag.tagId);
         nfcTag.technologies = Arrays.toString(tag.getTechList());
 
         NfcA nfcA = NfcA.get(tag);
