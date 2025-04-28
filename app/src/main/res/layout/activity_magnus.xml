@@ -13,10 +13,10 @@
         android:layout_width="267dp"
         android:layout_height="82dp"
         android:layout_marginStart="71dp"
-        android:layout_marginTop="724dp"
+        android:layout_marginTop="600dp"
         android:layout_marginEnd="71dp"
         android:backgroundTint="#1E555C"
-        android:text="Add a New Card"
+        android:text="Show NFC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,29 +27,17 @@
         android:layout_width="265dp"
         android:layout_height="130dp"
         android:layout_marginStart="94dp"
+        android:layout_marginTop="148dp"
         android:layout_marginEnd="95dp"
-        android:layout_marginBottom="128dp"
+        android:layout_marginBottom="144dp"
         android:backgroundTint="#3A2E39"
         android:shape="rectangle"
-        android:text="Send NFC Signal"
+        android:text="Read NFC Signal"
         app:layout_constraintBottom_toTopOf="@+id/newCardButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinnerCard"
-        android:layout_width="242dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="130dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toTopOf="@+id/bttnSendSig"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView3"
@@ -64,19 +52,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginEnd="148dp"
-        android:layout_marginBottom="7dp"
-        android:text="Recent used cards"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerCard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,62 +5,52 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#CBE2E0"
+    tools:context=".HomeActivityPage">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <Button
+        android:id="@+id/newCardButton"
+        android:layout_width="267dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginEnd="71dp"
+        android:backgroundTint="#1E555C"
+        android:text="Show NFC"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/madsbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mads"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/bttnSendSig"
+        android:layout_width="265dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginBottom="144dp"
+        android:backgroundTint="#3A2E39"
+        android:shape="rectangle"
+        android:text="Read NFC Signal"
+        app:layout_constraintBottom_toTopOf="@+id/newCardButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <Button
-        android:id="@+id/nikolasbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nikolas"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="145dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="133dp"
+        android:text="NFCNinja"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.803"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
-
-    <Button
-        android:id="@+id/gustavbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gustav"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.358"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.819" />
-
-    <Button
-        android:id="@+id/magnusbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Magnus"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.81"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.819" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

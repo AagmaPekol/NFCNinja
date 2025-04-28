@@ -15,7 +15,7 @@
         android:theme="@style/Theme.NFCNinja"
         tools:targetApi="31">
         <activity
-            android:name=".gustav"
+            android:name=".ReadNFCActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
@@ -35,7 +35,7 @@
             android:name=".mads"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".HomeActivityPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
