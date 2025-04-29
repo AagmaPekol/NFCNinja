@@ -9,6 +9,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.room.Room;
 
+import com.example.nfcninja.database.AppDatabase;
+import com.example.nfcninja.database.DBNfc;
+import com.example.nfcninja.database.NfcDao;
+
 import java.util.List;
 
 public class nikolas extends AppCompatActivity {
@@ -27,17 +31,17 @@ public class nikolas extends AppCompatActivity {
     private int[] array = {1,2,3,4};
 
     //Create instance of database
-    AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "AppDatabase").build();
+    AppDatabase db = AppDatabase.getDatabase(this);
 
     //Create instance of Data access object
-    NfcDao nfcDao = db.nfcDao();
+    NfcDao dbDao = db.nfcDao();
 
     //returns list of all entities
-    List<DBNfc> tags = nfcDao.getAll();
-    List<DBNfc> tagsOne = nfcDao.loadAllByIds(array);
+    List<DBNfc> tags = dbDao.getAll();
+    List<DBNfc> tagsOne = dbDao.loadAllByIds(array);
 
     public void ReadNfc(int primaryKey){
-        DBNfc nfcTag = nfcDao.getTagById(primaryKey);
+        DBNfc nfcTag = dbDao.getTagById(primaryKey);
         String nfcInfo = nfcTag.tagInfo;
         String nfcId = nfcTag.tagId;
         String nfcTech = nfcTag.technologies;

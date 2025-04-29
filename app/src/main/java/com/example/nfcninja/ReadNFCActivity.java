@@ -9,7 +9,7 @@ import android.nfc.tech.NfcA;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextClock;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +19,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.nfcninja.database.AppDatabase;
+import com.example.nfcninja.database.DBNfc;
+import com.example.nfcninja.database.NfcDao;
+
 import java.util.Arrays;
 
 public class ReadNFCActivity extends AppCompatActivity {
@@ -27,20 +31,31 @@ public class ReadNFCActivity extends AppCompatActivity {
     private PendingIntent pendingIntent;
     private IntentFilter[] intentFiltersArray;
     private String[][] techListsArray;
-    private TextView nfcInfoTextView;
+    private DBNfc nfcTag;
+
+
     private boolean readerActive = false;
+    private AppDatabase db;
+    private NfcDao dbDao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_gustav);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        setContentView(R.layout.activity_read_nfc);
 
+        db = AppDatabase.getDatabase(this);
+        dbDao = db.nfcDao();
+
+        Button saveToDBbtn = findViewById(R.id.saveToDB);
+
+        saveToDBbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveToDatabase(nfcTag);
+            }
+        });
 
 //        Button button = (Button) findViewById(R.id.readerButton);
 //        button.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +72,6 @@ public class ReadNFCActivity extends AppCompatActivity {
 //                Log.d("BUTTONS", "readerActive: " + readerActive);
 //            }
 //        });
-
 
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -100,7 +114,7 @@ public class ReadNFCActivity extends AppCompatActivity {
     }
     private void processTag(Tag tag) {
 
-        DBNfc nfcTag = new DBNfc();
+        nfcTag = new DBNfc();
         nfcTag.tagId = bytesToHexString(tag.getId());
         TextView tagIdText = (TextView) findViewById(R.id.tagIdText);
         tagIdText.setText(nfcTag.tagId);
@@ -127,6 +141,16 @@ public class ReadNFCActivity extends AppCompatActivity {
         timeoutText.setText(nfcTag.timeout);
         //nfcInfoTextView.setText(nfcTag.tagId);
     }
+
+    private void saveToDatabase(DBNfc nfcTag) {
+        if(nfcTag != null){
+            new Thread(()->dbDao.insert(nfcTag)).start();
+        } else {
+            Toast.makeText(this, "NFC tag is null", Toast.LENGTH_SHORT).show();
+            Log.d("NFC", "NFC tag is null");
+        }
+    }
+
     private String bytesToHexString(byte[] bytes) {
         StringBuilder sb = new StringBuilder();
         for (byte b : bytes) {

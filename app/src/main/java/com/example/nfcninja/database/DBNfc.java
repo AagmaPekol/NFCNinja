@@ -1,4 +1,4 @@
-package com.example.nfcninja;
+package com.example.nfcninja.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

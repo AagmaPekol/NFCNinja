@@ -29,13 +29,7 @@
             android:name=".nikolas"
             android:exported="false" />
         <activity
-            android:name=".magnus"
-            android:exported="false" />
-        <activity
-            android:name=".mads"
-            android:exported="false" />
-        <activity
-            android:name=".HomeActivityPage"
+            android:name=".HomePage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

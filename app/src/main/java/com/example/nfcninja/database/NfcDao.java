@@ -1,4 +1,4 @@
-package com.example.nfcninja;
+package com.example.nfcninja.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -17,9 +17,8 @@ public interface NfcDao {
 
     @Query("SELECT * FROM dbnfc WHERE uid==:nfcId")
     public DBNfc getTagById(int nfcId);
-
     @Insert
-    public void insertAll(DBNfc... DBNFC);
+    public void insert(DBNfc dbNfc);
 
     @Delete
     public void delete(DBNfc dbNfc);
