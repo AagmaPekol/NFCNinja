@@ -11,6 +11,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract  NfcDao nfcDao();
 
     private static volatile AppDatabase INSTANCE;
+
     //Singleton pattern
     //Ensures that only one instance of the database is created
     public static AppDatabase getDatabase(final Context context){

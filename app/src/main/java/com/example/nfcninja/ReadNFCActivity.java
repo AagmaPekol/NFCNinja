@@ -144,7 +144,10 @@ public class ReadNFCActivity extends AppCompatActivity {
 
     private void saveToDatabase(DBNfc nfcTag) {
         if(nfcTag != null){
-            new Thread(()->dbDao.insert(nfcTag)).start();
+            new Thread(()-> {
+                dbDao.insert(nfcTag);
+                runOnUiThread(() -> Toast.makeText(this, "NFC tag saved to database", Toast.LENGTH_SHORT).show());
+            }).start();
         } else {
             Toast.makeText(this, "NFC tag is null", Toast.LENGTH_SHORT).show();
             Log.d("NFC", "NFC tag is null");
