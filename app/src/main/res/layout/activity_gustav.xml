@@ -18,49 +18,49 @@
         android:id="@+id/tagIdText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="231dp" />
 
     <TextView
         android:id="@+id/technologiesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="301dp" />
 
     <TextView
         android:id="@+id/ATQAText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="356dp" />
 
     <TextView
         android:id="@+id/SAKText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="424dp" />
 
     <TextView
         android:id="@+id/maxTransceiveLengthText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="492dp" />
 
     <TextView
         android:id="@+id/timeoutText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="566dp" />
 
     <TextView
         android:id="@+id/nameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="634dp" />
 
     <EditText
@@ -92,7 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tag ID"
-        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="212dp" />
 
     <TextView
@@ -100,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Technologies"
-        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="282dp" />
 
     <TextView
@@ -108,7 +108,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ATQA"
-        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="337dp" />
 
     <TextView
@@ -116,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SAK"
-        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="405dp" />
 
     <TextView
@@ -124,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Maximum Transceive Length"
-        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="473dp" />
 
     <TextView
@@ -132,7 +132,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Timeout"
-        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="547dp" />
 
     <TextView
@@ -140,6 +140,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
-        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="615dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

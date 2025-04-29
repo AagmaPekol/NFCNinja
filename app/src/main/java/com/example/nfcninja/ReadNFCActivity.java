@@ -9,6 +9,7 @@ import android.nfc.tech.NfcA;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -103,13 +104,27 @@ public class ReadNFCActivity extends AppCompatActivity {
         nfcTag.tagId = bytesToHexString(tag.getId());
         TextView tagIdText = (TextView) findViewById(R.id.tagIdText);
         tagIdText.setText(nfcTag.tagId);
+
         nfcTag.technologies = Arrays.toString(tag.getTechList());
+        TextView technologiesText = (TextView) findViewById(R.id.technologiesText);
+        technologiesText.setText(nfcTag.technologies);
 
         NfcA nfcA = NfcA.get(tag);
         nfcTag.ATQA = bytesToHexString(nfcA.getAtqa());
+        TextView ATQAText = (TextView) findViewById(R.id.ATQAText);
+        ATQAText.setText(nfcTag.ATQA);
+
         nfcTag.SAK = String.format("%02x", nfcA.getSak());
+        TextView SAKText = (TextView) findViewById(R.id.SAKText);
+        SAKText.setText(nfcTag.SAK);
+
         nfcTag.maxTransceiveLength = nfcA.getMaxTransceiveLength();
+        TextView maxTransceiveLengthText = (TextView) findViewById(R.id.maxTransceiveLengthText);
+        maxTransceiveLengthText.setText(nfcTag.maxTransceiveLength);
+
         nfcTag.timeout = nfcA.getTimeout();
+        TextView timeoutText = (TextView) findViewById(R.id.timeoutText);
+        timeoutText.setText(nfcTag.timeout);
         //nfcInfoTextView.setText(nfcTag.tagId);
     }
     private String bytesToHexString(byte[] bytes) {
