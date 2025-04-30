@@ -116,30 +116,37 @@ public class ReadNFCActivity extends AppCompatActivity {
 
         nfcTag = new DBNfc();
         nfcTag.tagId = bytesToHexString(tag.getId());
-        TextView tagIdText = (TextView) findViewById(R.id.tagIdText);
-        tagIdText.setText(nfcTag.tagId);
 
         nfcTag.technologies = Arrays.toString(tag.getTechList());
-        TextView technologiesText = (TextView) findViewById(R.id.technologiesText);
-        technologiesText.setText(nfcTag.technologies);
 
         NfcA nfcA = NfcA.get(tag);
         nfcTag.ATQA = bytesToHexString(nfcA.getAtqa());
+
+        nfcTag.SAK = String.format("%02x", nfcA.getSak());
+
+        nfcTag.maxTransceiveLength = nfcA.getMaxTransceiveLength();
+
+        nfcTag.timeout = nfcA.getTimeout();
+
+        //nfcInfoTextView.setText(nfcTag.tagId);
+
+        TextView tagIdText = (TextView) findViewById(R.id.tagIdText);
+        tagIdText.setText(nfcTag.tagId);
+
+        TextView technologiesText = (TextView) findViewById(R.id.technologiesText);
+        technologiesText.setText(nfcTag.technologies);
+
         TextView ATQAText = (TextView) findViewById(R.id.ATQAText);
         ATQAText.setText(nfcTag.ATQA);
 
-        nfcTag.SAK = String.format("%02x", nfcA.getSak());
         TextView SAKText = (TextView) findViewById(R.id.SAKText);
         SAKText.setText(nfcTag.SAK);
 
-        nfcTag.maxTransceiveLength = nfcA.getMaxTransceiveLength();
         TextView maxTransceiveLengthText = (TextView) findViewById(R.id.maxTransceiveLengthText);
         maxTransceiveLengthText.setText(nfcTag.maxTransceiveLength);
 
-        nfcTag.timeout = nfcA.getTimeout();
         TextView timeoutText = (TextView) findViewById(R.id.timeoutText);
         timeoutText.setText(nfcTag.timeout);
-        //nfcInfoTextView.setText(nfcTag.tagId);
     }
 
     private void saveToDatabase(DBNfc nfcTag) {
