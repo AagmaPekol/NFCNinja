@@ -28,8 +28,7 @@ public class ShowNFCActivity extends AppCompatActivity {
     private AppDatabase db;
     private NfcDao dbDao;
 
-    private DBNfc nfcTag;
-
+    private LinearLayout parentLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,51 +37,57 @@ public class ShowNFCActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_nfcactivity);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
+        parentLayout = findViewById(R.id.button_container);
+
         db = AppDatabase.getDatabase(this);
         dbDao = db.nfcDao();
 
-        new Thread(()-> {
+        spawnButton();
+    }
+
+    private void spawnButton() {
+        new Thread(() -> {
             List<Integer> nfcIds = dbDao.getAllIds();
 
-            for (int nfcId : nfcIds) {
-
-                runOnUiThread(()-> {
-                    Button spawnBtn = new Button(this);
-                    spawnBtn.setText("NFC nr: " + nfcId);
-                    spawnBtn.setId(nfcId);
-                    spawnBtn.setBackgroundColor(Color.YELLOW);
-                    spawnBtn.setTextColor(Color.BLACK);
-
-                    int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
-                    spawnBtn.setPadding(padding, padding, padding, padding);
-
-                    spawnBtn.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                    );
-
-                    layoutParams.setMargins(0, 100, 0, 0);
-
-                    spawnBtn.setLayoutParams(layoutParams);
-                    LinearLayout parentLayout = (LinearLayout) findViewById(R.id.button_container);
-                    parentLayout.addView(spawnBtn);
-
-                    spawnBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(ShowNFCActivity.this, ReadNFCActivity.class);
-
-                            
-
-                            startActivity(intent);
-                        }
-                    });
-                });
-
-            }
+            runOnUiThread(() -> {
+                if (nfcIds.isEmpty()) {
+                    Toast.makeText(this, "No NFC tags found", Toast.LENGTH_SHORT).show();
+                } else {
+                    for (int nfcId : nfcIds) {
+                        Button spawnBtn = createButton(nfcId);
+                        parentLayout.addView(spawnBtn);
+                    }
+                }
+            });
         }).start();
+    }
 
+    //Thanks to Mehmet Abak for the buttons
+    // https://abakmehmet.medium.com/how-to-create-a-button-in-java-android-programmatically-a6cf0eae1027
+    private Button createButton(int nfcId) {
+        Button spawnBtn = new Button(this);
+        spawnBtn.setText("NFC nr: " + nfcId);
+        spawnBtn.setId(nfcId);
+        spawnBtn.setBackgroundColor(Color.YELLOW);
+        spawnBtn.setTextColor(Color.BLACK);
+        spawnBtn.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+
+        int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
+        spawnBtn.setPadding(padding, padding, padding, padding);
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        layoutParams.setMargins(0, 50, 0, 0);
+        spawnBtn.setLayoutParams(layoutParams);
+
+        spawnBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(ShowNFCActivity.this, ReadNFCActivity.class);
+            intent.putExtra("nfcId", nfcId);
+            startActivity(intent);
+        });
+
+        return spawnBtn;
     }
 }

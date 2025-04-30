@@ -149,7 +149,6 @@
         android:layout_height="20dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/textview_border"
-        android:hint="..."
         app:layout_constraintBottom_toTopOf="@+id/textView15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
