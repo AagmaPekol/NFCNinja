@@ -18,20 +18,24 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_page);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
         Button addCard = (Button) findViewById(R.id.bttnSendSig);
+        Button showNFC = (Button) findViewById(R.id.showNFC);
+
         addCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomePage.this, ReadNFCActivity.class);
                 startActivity(intent);
             }
+        });
 
-            ;
+        showNFC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this, ShowNFCActivity.class);
+                startActivity(intent);
+            }
         });
     }
 }

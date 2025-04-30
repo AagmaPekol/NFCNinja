@@ -18,6 +18,10 @@ public interface NfcDao {
 
     @Query("SELECT * FROM dbnfc WHERE uid==:nfcId")
     public DBNfc getTagById(int nfcId);
+
+    @Query("SELECT uid FROM dbnfc")
+    List<Integer> getAllIds();
+
     @Insert
     public void insert(DBNfc dbNfc);
 
