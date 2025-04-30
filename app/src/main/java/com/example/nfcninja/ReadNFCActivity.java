@@ -15,13 +15,12 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.nfcninja.database.AppDatabase;
-import com.example.nfcninja.database.DBNfc;
-import com.example.nfcninja.database.NfcDao;
+import com.example.nfcninja.database.*;
 
 import java.util.Arrays;
 
@@ -33,7 +32,6 @@ public class ReadNFCActivity extends AppCompatActivity {
     private String[][] techListsArray;
     private DBNfc nfcTag;
 
-
     private boolean readerActive = false;
     private AppDatabase db;
     private NfcDao dbDao;
@@ -44,6 +42,7 @@ public class ReadNFCActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_read_nfc);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         db = AppDatabase.getDatabase(this);
         dbDao = db.nfcDao();
@@ -116,42 +115,38 @@ public class ReadNFCActivity extends AppCompatActivity {
 
         nfcTag = new DBNfc();
         nfcTag.tagId = bytesToHexString(tag.getId());
-
-        nfcTag.technologies = Arrays.toString(tag.getTechList());
-
-        NfcA nfcA = NfcA.get(tag);
-        nfcTag.ATQA = bytesToHexString(nfcA.getAtqa());
-
-        nfcTag.SAK = String.format("%02x", nfcA.getSak());
-
-        nfcTag.maxTransceiveLength = nfcA.getMaxTransceiveLength();
-
-        nfcTag.timeout = nfcA.getTimeout();
-
-        //nfcInfoTextView.setText(nfcTag.tagId);
-
         TextView tagIdText = (TextView) findViewById(R.id.tagIdText);
         tagIdText.setText(nfcTag.tagId);
 
+        nfcTag.technologies = Arrays.toString(tag.getTechList());
         TextView technologiesText = (TextView) findViewById(R.id.technologiesText);
         technologiesText.setText(nfcTag.technologies);
 
+        NfcA nfcA = NfcA.get(tag);
+        nfcTag.ATQA = bytesToHexString(nfcA.getAtqa());
         TextView ATQAText = (TextView) findViewById(R.id.ATQAText);
         ATQAText.setText(nfcTag.ATQA);
 
+        nfcTag.SAK = String.format("%02x", nfcA.getSak());
         TextView SAKText = (TextView) findViewById(R.id.SAKText);
         SAKText.setText(nfcTag.SAK);
 
+        nfcTag.maxTransceiveLength = nfcA.getMaxTransceiveLength();
         TextView maxTransceiveLengthText = (TextView) findViewById(R.id.maxTransceiveLengthText);
-        maxTransceiveLengthText.setText(nfcTag.maxTransceiveLength);
+        maxTransceiveLengthText.setText(String.valueOf(nfcTag.maxTransceiveLength));
 
+        nfcTag.timeout = nfcA.getTimeout();
         TextView timeoutText = (TextView) findViewById(R.id.timeoutText);
-        timeoutText.setText(nfcTag.timeout);
+        timeoutText.setText(String.valueOf(nfcTag.timeout));
+        //nfcInfoTextView.setText(nfcTag.tagId);
     }
 
     private void saveToDatabase(DBNfc nfcTag) {
         if(nfcTag != null){
-            new Thread(()->dbDao.insert(nfcTag)).start();
+            new Thread(()-> {
+                dbDao.insert(nfcTag);
+                runOnUiThread(() -> Toast.makeText(this, "NFC tag saved to database", Toast.LENGTH_SHORT).show());
+            }).start();
         } else {
             Toast.makeText(this, "NFC tag is null", Toast.LENGTH_SHORT).show();
             Log.d("NFC", "NFC tag is null");

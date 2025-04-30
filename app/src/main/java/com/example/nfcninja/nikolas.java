@@ -9,9 +9,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.room.Room;
 
-import com.example.nfcninja.database.AppDatabase;
-import com.example.nfcninja.database.DBNfc;
-import com.example.nfcninja.database.NfcDao;
+import com.example.nfcninja.database.*;
 
 import java.util.List;
 

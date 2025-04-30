@@ -9,7 +9,7 @@
     tools:context=".HomePage">
 
     <Button
-        android:id="@+id/newCardButton"
+        android:id="@+id/showNFC"
         android:layout_width="267dp"
         android:layout_height="82dp"
         android:layout_marginStart="71dp"
@@ -35,7 +35,7 @@
         android:backgroundTint="#3A2E39"
         android:shape="rectangle"
         android:text="Read NFC Signal"
-        app:layout_constraintBottom_toTopOf="@+id/newCardButton"
+        app:layout_constraintBottom_toTopOf="@+id/showNFC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"

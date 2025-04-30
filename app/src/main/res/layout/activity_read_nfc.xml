@@ -101,8 +101,8 @@
 
     <TextView
         android:id="@+id/technologiesText"
-        android:layout_width="352dp"
-        android:layout_height="20dp"
+        android:layout_width="351dp"
+        android:layout_height="41dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/textview_border"
         app:layout_constraintBottom_toTopOf="@+id/textView16"
@@ -149,6 +149,7 @@
         android:layout_height="20dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/textview_border"
+        android:hint="..."
         app:layout_constraintBottom_toTopOf="@+id/textView15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"

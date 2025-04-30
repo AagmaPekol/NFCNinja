@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -17,9 +18,16 @@ public interface NfcDao {
 
     @Query("SELECT * FROM dbnfc WHERE uid==:nfcId")
     public DBNfc getTagById(int nfcId);
+
+    @Query("SELECT uid FROM dbnfc")
+    List<Integer> getAllIds();
+
     @Insert
     public void insert(DBNfc dbNfc);
 
     @Delete
     public void delete(DBNfc dbNfc);
+
+    @Update
+    public void update(DBNfc dbNfc);
 }
