@@ -33,9 +33,9 @@ public class ReadNFCActivity extends AppCompatActivity {
     private DBNfc nfcTag;
 
     private boolean readerActive = false;
+
     private AppDatabase db;
     private NfcDao dbDao;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,31 +47,43 @@ public class ReadNFCActivity extends AppCompatActivity {
         db = AppDatabase.getDatabase(this);
         dbDao = db.nfcDao();
 
-        Button saveToDBbtn = findViewById(R.id.saveToDB);
+        int nfcId = getIntent().getIntExtra("nfcId", -1);
 
+        if (nfcId != -1) {
+            new Thread(() -> {
+                DBNfc nfcTagDB = dbDao.getTagById(nfcId);
+
+                runOnUiThread(() -> {
+                    if (nfcTagDB != null) {
+                        TextView tagIdText = (TextView) findViewById(R.id.tagIdText);
+                        tagIdText.setText(nfcTagDB.tagId);
+
+                        TextView technologiesText = (TextView) findViewById(R.id.technologiesText);
+                        technologiesText.setText(nfcTagDB.technologies);
+
+                        TextView ATQAText = (TextView) findViewById(R.id.ATQAText);
+                        ATQAText.setText(nfcTagDB.ATQA);
+
+                        TextView SAKText = (TextView) findViewById(R.id.SAKText);
+                        SAKText.setText(nfcTagDB.SAK);
+
+                        TextView maxTransceiveLengthText = (TextView) findViewById(R.id.maxTransceiveLengthText);
+                        maxTransceiveLengthText.setText(String.valueOf(nfcTagDB.maxTransceiveLength));
+
+                        TextView timeoutText = (TextView) findViewById(R.id.timeoutText);
+                        timeoutText.setText(String.valueOf(nfcTagDB.timeout));
+                    }
+                });
+            }).start();
+        }
+
+        Button saveToDBbtn = findViewById(R.id.saveToDB);
         saveToDBbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveToDatabase(nfcTag);
             }
         });
-
-//        Button button = (Button) findViewById(R.id.readerButton);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("BUTTONS", "User tapped the ReaderButton");
-//
-//                if (!readerActive) {
-//                    button.setText("Stop reading");
-//                } else {
-//                    button.setText("Start reading");
-//                }
-//                readerActive = !readerActive;
-//                Log.d("BUTTONS", "readerActive: " + readerActive);
-//            }
-//        });
-
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter ==null) {
@@ -111,6 +123,7 @@ public class ReadNFCActivity extends AppCompatActivity {
             }
         }
     }
+
     private void processTag(Tag tag) {
 
         nfcTag = new DBNfc();
