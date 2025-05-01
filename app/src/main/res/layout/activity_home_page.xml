@@ -48,6 +48,7 @@
         android:layout_marginEnd="133dp"
         android:layout_marginBottom="32dp"
         android:text="NFCNinja"
+        android:textColor="@color/black"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toTopOf="@+id/bttnSendSig"
         app:layout_constraintEnd_toEndOf="parent"
