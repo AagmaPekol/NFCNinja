@@ -68,9 +68,10 @@ public class ShowNFCActivity extends AppCompatActivity {
         Button spawnBtn = new Button(this);
         spawnBtn.setText("NFC nr: " + nfcId);
         spawnBtn.setId(nfcId);
-        spawnBtn.setBackgroundColor(Color.YELLOW);
-        spawnBtn.setTextColor(Color.BLACK);
+        spawnBtn.setBackgroundColor(Color.parseColor("#1E555C"));
+        spawnBtn.setTextColor(Color.WHITE);
         spawnBtn.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+
 
         int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
         spawnBtn.setPadding(padding, padding, padding, padding);

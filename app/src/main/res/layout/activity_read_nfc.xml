@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#CBE2E0"
     tools:context=".ReadNFCActivity">
 
     <EditText
@@ -28,9 +29,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Tag ID"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/tagIdText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -39,9 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Technologies"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/technologiesText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -50,9 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Timeout"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/timeoutText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -61,9 +62,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="Maximum Transceive Length"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/maxTransceiveLengthText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -72,9 +73,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="SAK"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/SAKText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -83,17 +84,21 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="ATQA"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/ATQAText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/ATQAText"
-        android:layout_width="352dp"
+        android:layout_width="350dp"
         android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:elevation="20dp"
         app:layout_constraintBottom_toTopOf="@+id/textView17"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -101,10 +106,14 @@
 
     <TextView
         android:id="@+id/technologiesText"
-        android:layout_width="351dp"
-        android:layout_height="41dp"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:elevation="20dp"
         app:layout_constraintBottom_toTopOf="@+id/textView16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -112,10 +121,14 @@
 
     <TextView
         android:id="@+id/timeoutText"
-        android:layout_width="352dp"
+        android:layout_width="350dp"
         android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="168dp"
         android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:elevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -123,10 +136,14 @@
 
     <TextView
         android:id="@+id/maxTransceiveLengthText"
-        android:layout_width="352dp"
+        android:layout_width="350dp"
         android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:elevation="20dp"
         app:layout_constraintBottom_toTopOf="@+id/textView19"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -134,10 +151,14 @@
 
     <TextView
         android:id="@+id/SAKText"
-        android:layout_width="352dp"
+        android:layout_width="350dp"
         android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:elevation="20dp"
         app:layout_constraintBottom_toTopOf="@+id/textView18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -145,10 +166,14 @@
 
     <TextView
         android:id="@+id/tagIdText"
-        android:layout_width="352dp"
+        android:layout_width="350dp"
         android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:elevation="20dp"
         app:layout_constraintBottom_toTopOf="@+id/textView15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -158,7 +183,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="Hold your phone close to a card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -170,6 +195,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save NFC"
+        android:backgroundTint="#3A2E39"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -62,16 +62,16 @@ public class ReadNFCActivity extends AppCompatActivity {
                         technologiesText.setText(nfcTagDB.technologies);
 
                         TextView ATQAText = (TextView) findViewById(R.id.ATQAText);
-                        ATQAText.setText(nfcTagDB.ATQA);
+                        ATQAText.setText(String.valueOf(nfcTagDB.ATQA + " bytes"));
 
                         TextView SAKText = (TextView) findViewById(R.id.SAKText);
-                        SAKText.setText(nfcTagDB.SAK);
+                        SAKText.setText(String.valueOf(nfcTagDB.SAK + " bytes"));
 
                         TextView maxTransceiveLengthText = (TextView) findViewById(R.id.maxTransceiveLengthText);
-                        maxTransceiveLengthText.setText(String.valueOf(nfcTagDB.maxTransceiveLength));
+                        maxTransceiveLengthText.setText(String.valueOf(nfcTagDB.maxTransceiveLength + " bytes"));
 
                         TextView timeoutText = (TextView) findViewById(R.id.timeoutText);
-                        timeoutText.setText(String.valueOf(nfcTagDB.timeout));
+                        timeoutText.setText(String.valueOf(nfcTagDB.timeout + " ms"));
                     }
                 });
             }).start();
@@ -138,19 +138,19 @@ public class ReadNFCActivity extends AppCompatActivity {
         NfcA nfcA = NfcA.get(tag);
         nfcTag.ATQA = bytesToHexString(nfcA.getAtqa());
         TextView ATQAText = (TextView) findViewById(R.id.ATQAText);
-        ATQAText.setText(nfcTag.ATQA);
+        ATQAText.setText(String.valueOf(nfcTag.ATQA + " bytes"));
 
         nfcTag.SAK = String.format("%02x", nfcA.getSak());
         TextView SAKText = (TextView) findViewById(R.id.SAKText);
-        SAKText.setText(nfcTag.SAK);
+        SAKText.setText(String.valueOf(nfcTag.SAK + " bytes"));
 
         nfcTag.maxTransceiveLength = nfcA.getMaxTransceiveLength();
         TextView maxTransceiveLengthText = (TextView) findViewById(R.id.maxTransceiveLengthText);
-        maxTransceiveLengthText.setText(String.valueOf(nfcTag.maxTransceiveLength));
+        maxTransceiveLengthText.setText(String.valueOf(nfcTag.maxTransceiveLength + " bytes"));
 
         nfcTag.timeout = nfcA.getTimeout();
         TextView timeoutText = (TextView) findViewById(R.id.timeoutText);
-        timeoutText.setText(String.valueOf(nfcTag.timeout));
+        timeoutText.setText(String.valueOf(nfcTag.timeout + " ms"));
         //nfcInfoTextView.setText(nfcTag.tagId);
     }
 

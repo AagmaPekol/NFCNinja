@@ -10,8 +10,8 @@
 
     <Button
         android:id="@+id/showNFC"
-        android:layout_width="267dp"
-        android:layout_height="82dp"
+        android:layout_width="265dp"
+        android:layout_height="88dp"
         android:layout_marginStart="71dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="71dp"
@@ -32,7 +32,6 @@
         android:layout_marginEnd="95dp"
         android:layout_marginBottom="32dp"
         android:backgroundTint="#3A2E39"
-        android:shape="rectangle"
         android:text="Read NFC Signal"
         app:layout_constraintBottom_toTopOf="@+id/showNFC"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,14 +44,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="133dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="133dp"
         android:layout_marginBottom="32dp"
         android:text="NFCNinja"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toTopOf="@+id/bttnSendSig"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
